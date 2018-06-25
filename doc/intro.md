@@ -1,32 +1,25 @@
 # Introduction to artstor-group-service
 
-Artstor group service provides CRUD methods for dealing with group of images/objects.
+Artstor provides various tools to organize content on AIW workspace.
 
-Search for Groups
-    GET /api/v1/group Gets all Groups available for the currently logged in user
+Image group can be defined as a logical grouping of image,media
 
-Create an Image group
-    POST /api/v1/group Returns a freshly minted group object
-    POST /api/v1/group/{group-id}/copy  Returns a freshly minted group object copied from the provided group id
+Artstor group service provides various CRUD methods for dealing with group of images/objects.Also, this service supports sharing group using tokens.
 
-Deletes a group
-    DELETE /api/v1/group/{group-id}
+Technical Requirements:-
 
-Read a group object
-    GET /api/v1/group/{group-id}
+1. Elastic Search as a search tool to search groups by name or descriptive content.
 
-Updates a group object
-    PUT /api/v1/group/{group-id}
-    PUT /api/v1/group/{group-id}/admin/public    For Artstor admin use only: Updates the group's public value.
-    PUT /api/v1/group/items/delete    Deletes objects from groups
+2. Postgres database: this is to support create,read,update and delete functions.Alternatively,schema can be located on other relational databases.
 
-Gets the metadata for all the specified items the user has access too.
-    GET /api/v1/group/{group-id}/metadata Get metadata for group items  (150 max) with group id
-    GET /api/v1/group/{group-id}/secure/metadata/{object-id} Accepts object-id in url and returns the metadata in legacy json format for the specified item.
-    GET /api/v1/group/{group-id}/items Gets the Items for all the specified items the user has access too. (150 max) with group id
+3. Metadata service that can serve metadata for images identified by groups.
 
-Sharing group using tokens
-    POST /api/v1/group/{group-id}/share Creates a token for sharing the specified group
-    POST /api/v1/group/redeem/{token} Redeems a token for access to the specified group
-    DELETE /api/v1/group/expire/{token} Invalidates a token so it can no longer be used
-    GET /api/v1/group/{group-id}/tokens Returns any tokens that are set on the group
+4. Oracle database as one optional source for metadata.
+
+Library Dependencies:-
+1. org.slf4j, org.apache.logging.log4j and ring logger libraries
+2. elastic search client clojurewerkz/elastisch
+3. Sql libraries yesql,ojdbc7 and org.postgresql/postgresql
+4. ragtime for setting up test database.
+5. web api and swagger done using metosin/compojure-api.
+
