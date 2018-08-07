@@ -1,0 +1,48 @@
+INSERT INTO groups (id, name, description, sequence_number, public, deleted) VALUES (1, 'First Group', 'This is the first group', 1, 'f', 'f');
+INSERT INTO groups (id, name, description, sequence_number, public, deleted) VALUES (2, 'Second Group', 'This is the second group', 1, 'f', 'f');
+INSERT INTO groups (id, name, description, sequence_number, public, deleted) VALUES (3, 'Third Group', 'This is the third group', 1, 'f', 'f');
+INSERT INTO group_sharing VALUES (1, 1, 100, 'Will', 100);
+INSERT INTO group_sharing VALUES (2, 1, 200, 'Artstor', 200);
+INSERT INTO group_sharing VALUES (3, 1, 200, 'Ithaka', 300);
+INSERT INTO group_sharing VALUES (4, 1, 100, '299277', 300);
+INSERT INTO group_items (id, group_id, object_id, sequence_number) VALUES(1, 1, 'one item', 1);
+INSERT INTO group_items (id, group_id, object_id, sequence_number) VALUES(2, 1, 'two item', 2);
+INSERT INTO group_items (id, group_id, object_id, sequence_number) VALUES(3, 1, 'three item', 3);
+INSERT INTO group_items (id, group_id, object_id, sequence_number) VALUES(4, 1, 'four item', 4);
+INSERT INTO group_items (id, group_id, object_id, sequence_number) VALUES(5, 1, 'five item', 5);
+INSERT INTO group_items (id, group_id, object_id, sequence_number) VALUES(7, 2, 'one item', 1);
+INSERT INTO tags (id, tag) VALUES(1, 'first-magical-tag');
+INSERT INTO tags (id, tag) VALUES(2, 'first relatively magical tag');
+INSERT INTO tags (id, tag) VALUES(3, 'First not so magical tag');
+INSERT INTO tags (id, tag) VALUES(4, 'second-magical-tag');
+INSERT INTO tags (id, tag) VALUES(5, 'third-magical-tag');
+INSERT INTO group_tags (id, group_id, tag_id ) VALUES(1, 1, 1);
+INSERT INTO group_tags (id, group_id, tag_id ) VALUES(2, 1, 2);
+INSERT INTO group_tags (id, group_id, tag_id ) VALUES(4, 2, 2);
+INSERT INTO groups (id, name, description, sequence_number, public, deleted) VALUES (123, 'Secured Group', 'This is the exclusive group', 2, 'f', 'f');
+INSERT INTO group_sharing VALUES (5, 123, 100, '299277', 300);
+INSERT INTO group_sharing VALUES (6, 123, 100, 'Will', 200);
+INSERT INTO group_sharing VALUES (7, 123, 100, 'Sai', 100);
+INSERT INTO group_sharing VALUES (8, 123, 200, 'Artstor', 300);
+INSERT INTO group_sharing VALUES (9, 123, 200, '10001', 100);
+INSERT INTO group_sharing VALUES (11, 2, 100, '123456', 200);
+INSERT INTO group_sharing VALUES (12, 2, 100, '299277', 300);
+INSERT INTO group_sharing VALUES (13, 3, 100, '299277', 300);
+INSERT INTO group_items (id, group_id, object_id, sequence_number) VALUES(6, 123, 'one cool item', 1);
+INSERT INTO group_tags (id, group_id, tag_id ) VALUES(3, 123, 3);
+INSERT INTO user_profile VALUES(100, 1000);
+INSERT INTO user_profile VALUES(200, 2000);
+INSERT INTO user_profile VALUES(299277, 1000);
+INSERT INTO user_profile VALUES(123456, 1000);
+INSERT INTO user_profile VALUES(11111, 1111);
+--Used for Testing Public Flag
+INSERT INTO groups (id, name, description, sequence_number, public, deleted) VALUES (294484, 'Public Group', 'Readable by any authenticated User', 3, 'true', 'f');
+INSERT INTO group_sharing VALUES (10, 294484, 100, '299277', 300);
+-- Token testing data
+INSERT INTO group_tokens (token, access_type, group_id, created_by) VALUES('9bb3315a-df55-4b3b-bdbc-7421e6d79961', 100, 1, 299277);
+INSERT INTO group_tokens (token, access_type, group_id, created_by) VALUES('1bf2879e-d56f-44cd-8ed8-10af90deba7e', 200, 1, 2000);
+INSERT INTO group_tokens (token, access_type, group_id, created_by) VALUES('18cb49bf-2061-41f0-8ce9-2484db43af78', 200, 2, 2000);
+INSERT INTO groups (id, name, description, sequence_number, public, deleted) VALUES (100, 'Token Test Group', 'This is the exclusive group', 2, 'f', 'f');
+INSERT INTO group_sharing VALUES (100, 100, 100, '299277', 100);
+-- Used for Testing Valid Institution ids
+INSERT INTO institutions VALUES(1000);
